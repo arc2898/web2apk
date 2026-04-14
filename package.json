@@ -1,0 +1,31 @@
+{
+  "name": "web2apk",
+  "version": "1.0.0",
+  "description": "Convert any website to an Android APK in minutes — custom app name, icon, and URL",
+  "main": "build.js",
+  "bin": {
+    "web2apk": "./build.js"
+  },
+  "scripts": {
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arc2898/web2apk.git"
+  },
+  "keywords": ["web", "apk", "android", "capacitor", "convert", "pwa"],
+  "author": "arc2898",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arc2898/web2apk/issues"
+  },
+  "homepage": "https://github.com/arc2898/web2apk#readme",
+  "devDependencies": {
+    "@capacitor/cli": "^8.3.0",
+    "@capacitor/core": "^8.3.0",
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1",
+    "jimp": "^1.6.1",
+    "sharp": "^0.34.5"
+  }
+}
