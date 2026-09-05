@@ -7,7 +7,7 @@ const sharp = require("sharp");
 
 const args = process.argv.slice(2);
 
-if (args.length < 3) {
+function showHelp() {
   console.log(`
 ╔══════════════════════════════════════════════════╗
 ║            Web2APK — Build APKs from URLs          ║
@@ -19,10 +19,26 @@ if (args.length < 3) {
 ║    npx web2apk "My App" ./icon.png "https://..."   ║
 ╚══════════════════════════════════════════════════╝
 `);
-  process.exit(1);
+}
+
+if (args.includes('--help') || args.includes('-h') || args.length < 3) {
+  showHelp();
+  process.exit(0);
 }
 
 const [appName, iconPath, url] = args;
+if (!appName.trim()) {
+  console.error('App name must not be empty.');
+  process.exit(1);
+}
+
+try {
+  const parsedUrl = new URL(url);
+  if (!['http:', 'https:'].includes(parsedUrl.protocol)) throw new Error('unsupported protocol');
+} catch {
+  console.error('URL must be a valid http:// or https:// address.');
+  process.exit(1);
+}
 const safeName = appName.replace(/[^a-zA-Z0-9]/g, "");
 const projectDir = path.join(process.cwd(), `web2apk-${safeName.toLowerCase()}`);
 
