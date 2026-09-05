@@ -59,3 +59,7 @@ Web2APK wraps your URL in a Capacitor WebView — the same tech behind Ionic/PWA
 ## License
 
 MIT
+
+## Security notes
+
+Only package URLs from sources you trust. Review the generated Android project before signing or distributing an APK, and never place private API keys in the web assets that are bundled into the application.
